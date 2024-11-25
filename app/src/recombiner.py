@@ -17,12 +17,8 @@ def main(fname, recombine_on, expdir, virus):
         data[acc_id]["start"] = tmp[f"{recombine_on} "]["Start "]
         data[acc_id]["len"] = tmp[f"{recombine_on} "]["Length"]
 
-    # seed = r.randint(0,1)
-    # master_genome  = acc_ids[seed]
-    # donor_genome   = acc_ids[0 if seed == 1 else 1]
-    master_genome  = acc_ids[0]
+    master_genome  = acc_ids[0] # RM < TODO Randomise? If so, seq_names will need to be re-sorted.
     donor_genome   = acc_ids[1]
-
 
     donor_sequence = fasta[f">{virus}_{donor_genome}"][data[donor_genome]["start"] + 1 : data[donor_genome]["start"] + 1 + data[donor_genome]["len"]]
     recombinant_sequence = fasta[f">{virus}_{master_genome}"][0:data[master_genome]["start"]] + donor_sequence + fasta[f">{virus}_{master_genome}"][data[master_genome]["start"] + 1 + data[master_genome]["len"]:]

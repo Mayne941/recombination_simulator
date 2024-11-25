@@ -4,8 +4,8 @@ import os
 def castanet_req_body(exp_dir, virus):
     return {
         "ExpDir": f"{os.getcwd()}/{exp_dir}/{exp_dir.split('/')[-1]}_syn_reads", 
-        "ExpName": exp_dir.split("/")[1],
-        "SaveDir": f'{os.getcwd()}/{exp_dir.split("/")[0]}/{exp_dir.split("/")[0]}_castanet', 
+        "ExpName": f"{exp_dir.split('/')[0]}_{exp_dir.split('/')[-1]}_castanet",
+        "SaveDir": f'{os.getcwd()}/{exp_dir.split("/")[0]}/', 
         "RefStem": f"{os.getcwd()}/{virus}/{virus}.fasta", 
         "SingleEndedReads": False,
         "MatchLength": 40,
@@ -17,8 +17,8 @@ def castanet_req_body(exp_dir, virus):
         "RetainIds": "",
         "RetainNames": "",
         "ExcludeNames": "Homo",
-        "ConsensusMinD": 10,
-        "ConsensusCoverage": 5,
+        "ConsensusMinD": 5,
+        "ConsensusCoverage": 1,
         "ConsensusMapQ": 1,
         "ConsensusCleanFiles": True,
         "GtFile": "",
