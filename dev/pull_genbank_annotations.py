@@ -62,7 +62,7 @@ def get_gene_annotations(genbankies):
 
 if __name__ == "__main__":
     DATA = {
-        "hiv-1": [
+        "hiv_1": [
             "PP313274",
             "OQ551963",
             "OR736078",
@@ -105,8 +105,8 @@ if __name__ == "__main__":
         for accession in genbankies.keys():
             gene_annotations = get_gene_annotations(genbankies[accession])
             df = pd.DataFrame(gene_annotations, columns=df_cols)
-            df.to_csv(f"{EXP_NAME}/{accession}.tsv", sep="\t")
-            seqs.append(f">{EXP_NAME}_{accession}\n{str(genbankies[accession].seq)}\n")
+            df.to_csv(f"{EXP_NAME}/{accession.replace('_','')}.tsv", sep="\t", index=False)
+            seqs.append(f">{EXP_NAME}_{accession.replace('_','')}\n{str(genbankies[accession].seq)}\n")
             
             
         with open(f"{EXP_NAME}/{EXP_NAME}.fasta", "w") as f:

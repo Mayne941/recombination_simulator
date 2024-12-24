@@ -1,12 +1,13 @@
 
 import os 
 
-def castanet_req_body(exp_dir, virus):
+def castanet_req_body(exp_dir, data_dir, virus):
     return {
-        "ExpDir": f"{os.getcwd()}/{exp_dir}/{exp_dir.split('/')[-1]}_syn_reads", 
-        "ExpName": f"{exp_dir.split('/')[0]}_{exp_dir.split('/')[-1]}_castanet",
-        "SaveDir": f'{os.getcwd()}/{exp_dir.split("/")[0]}/', 
-        "RefStem": f"{os.getcwd()}/{virus}/{virus}.fasta", 
+        "ExpDir": f"{os.getcwd()}/{exp_dir}/{exp_dir.split('/')[-2]}_syn_reads", 
+        "ExpName": f"{exp_dir.split('/')[0]}_{exp_dir.split('/')[-2]}_castanet",
+        "SaveDir": f'{os.getcwd()}/{"/".join(exp_dir.split("/")[0:3])}/', 
+        "RefStem": f"{os.getcwd()}/{data_dir}/{virus}/{virus}.fasta", 
+        "Mapper": "bowtie2",
         "SingleEndedReads": False,
         "MatchLength": 50,
         "DoTrimming": True,
