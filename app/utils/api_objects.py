@@ -8,7 +8,7 @@ def castanet_req_body(exp_dir, virus):
         "SaveDir": f'{os.getcwd()}/{exp_dir.split("/")[0]}/', 
         "RefStem": f"{os.getcwd()}/{virus}/{virus}.fasta", 
         "SingleEndedReads": False,
-        "MatchLength": 40,
+        "MatchLength": 50,
         "DoTrimming": True,
         "TrimMinLen": 36,
         "DoKrakenPrefilter": False,

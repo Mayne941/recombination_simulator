@@ -5,6 +5,7 @@ from app.utils.cli_utils import read_fa, save_fa
 
 def main(fname, recombine_on, expdir, virus):
     raw_seqs = read_fa(f"{expdir}/{fname.replace('.fasta','')}/{fname}")
+    recombine_on = recombine_on.replace(" ","")
     fasta = {}
     for seq in raw_seqs:
         fasta[seq[0]] = seq[1]
@@ -14,8 +15,8 @@ def main(fname, recombine_on, expdir, virus):
     for acc_id in acc_ids:
         data[acc_id] = {}
         tmp = pd.read_csv(f"{virus}/{acc_id}.tsv",sep="\t",header=0,index_col=0).T
-        data[acc_id]["start"] = tmp[f"{recombine_on} "]["Start "]
-        data[acc_id]["len"] = tmp[f"{recombine_on} "]["Length"]
+        data[acc_id]["start"] = tmp[f"{recombine_on}"]["Start"]
+        data[acc_id]["len"] = tmp[f"{recombine_on}"]["Length"]
 
     master_genome  = acc_ids[0] # RM < TODO Randomise? If so, seq_names will need to be re-sorted.
     donor_genome   = acc_ids[1]
