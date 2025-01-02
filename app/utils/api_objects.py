@@ -18,7 +18,7 @@ def castanet_req_body(exp_dir, data_dir, virus):
         "RetainIds": "",
         "RetainNames": "",
         "ExcludeNames": "Homo",
-        "ConsensusMinD": 5,
+        "ConsensusMinD": 0.1,
         "ConsensusCoverage": 1,
         "ConsensusMapQ": 1,
         "ConsensusCleanFiles": True,
